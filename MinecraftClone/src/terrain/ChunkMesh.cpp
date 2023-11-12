@@ -36,12 +36,6 @@ unsigned int gfx::ChunkMeshBuffers::getCount()
 {
 	return m_Ibo.GetCount();
 }
-
-	m_Vao->LinkAttrib(m_Vbo.get(), 0, GL_FLOAT, 3, GL_FALSE, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(0));
-	m_Vao->LinkAttrib(m_Vbo.get(), 1, GL_FLOAT, 2, GL_FALSE, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(3 * sizeof(GLfloat)));
-	m_Vao->LinkAttribi(m_Vbo.get(), 2, GL_INT, 1, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(5 * sizeof(GLfloat)));
-
-
 terrain::ChunkMesh::ChunkMesh(glm::ivec3 position)
 	:terrain::Chunk(position)
 {	
