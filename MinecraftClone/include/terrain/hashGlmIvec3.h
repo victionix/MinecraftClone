@@ -13,7 +13,6 @@ struct ivec3Hash {
             return a == b;
         }
     };
-}
 
 
 #endif
