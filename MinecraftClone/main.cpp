@@ -20,8 +20,7 @@ int main()
     gfx::Window window(1920, 1080, "Minecraft Clone");
     {
         terrain::ChunkMap chunkMap;
-    Player m_Player;
-    terrain::ChunkMap m_ChunkMap(1);
+        Player m_Player;
     {
         {
             gfx::Shader shader("res/shaders/default.vert", "res/shaders/default.frag");
