@@ -5,12 +5,16 @@
 #include <glm/glm.hpp>
 #include <memory>
 #include <Blocks/Block.h>
+#include <functional>
 #include <Blocks/Dirt.h>
 
 
 
 
 //Forward declaration of the ChunkMap class
+namespace terrain {
+	class ChunkMap;
+}
 
 namespace terrain {
 	class Chunk
@@ -62,7 +66,7 @@ namespace terrain {
 		static constexpr const uint32_t m_Volume = m_Size.x * m_Size.y * m_Size.z;
 
 		//For Blocks and Chunks !!
-			static const std::array<glm::ivec3, 26> m_NeighboursOffset;
+		static const std::array<glm::ivec3, 26> m_NeighboursOffset;
 		//For the neighbours set
 		static const std::array<int16_t, 26> m_InverseNeighboursOffset;
 

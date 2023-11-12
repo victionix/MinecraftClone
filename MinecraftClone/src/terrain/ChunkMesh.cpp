@@ -37,6 +37,9 @@ unsigned int gfx::ChunkMeshBuffers::getCount()
 	return m_Ibo.GetCount();
 }
 
+	m_Vao->LinkAttrib(m_Vbo.get(), 0, GL_FLOAT, 3, GL_FALSE, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(0));
+	m_Vao->LinkAttrib(m_Vbo.get(), 1, GL_FLOAT, 2, GL_FALSE, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(3 * sizeof(GLfloat)));
+	m_Vao->LinkAttribi(m_Vbo.get(), 2, GL_INT, 1, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(5 * sizeof(GLfloat)));
 
 
 terrain::ChunkMesh::ChunkMesh(glm::ivec3 position)
@@ -75,7 +78,7 @@ void terrain::ChunkMesh::Build()
 	}
 	
 	if ((m_MeshData.vertices.size() != 0) && (m_MeshData.indices.size() != 0))
-	{	
+	{
 		m_Buffers = std::make_unique<gfx::ChunkMeshBuffers>(m_MeshData);
 	}
 	else
@@ -91,6 +94,7 @@ void terrain::ChunkMesh::Build()
 
 void terrain::ChunkMesh::Render(gfx::TextureArray& textureArray, gfx::Shader& shader, glm::mat4 view, glm::mat4 projection, glm::vec4 grassColor)
 {
+
 	shader.Bind();
 	shader.SetUniform4f("grassTopColor", grassColor.x, grassColor.y, grassColor.z, grassColor.w);
 
@@ -105,7 +109,7 @@ void terrain::ChunkMesh::Render(gfx::TextureArray& textureArray, gfx::Shader& sh
 	GLCall(glDrawElements(GL_TRIANGLES, m_Buffers->getCount(), GL_UNSIGNED_INT, nullptr));
 
 	m_Buffers->UnBind();
-
+	
 	textureArray.UnBind();
 	shader.UnBind();
 }

@@ -7,7 +7,7 @@ class Air : public Block
 {
 public: 
 	Air() {
-		id = AIR;	
+		id = AIR;
 		mesh = BLOCKMESH_NULL;
 		facesTextureId = {};
 	};

@@ -8,8 +8,10 @@
 
 #include <terrain/hashGlmIvec3.h>
 
+
 namespace terrain
 {
+	
 	class ChunkMap
 	{
 	public:

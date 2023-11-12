@@ -12,6 +12,8 @@ struct ivec3Hash {
         bool operator()(glm::ivec3 const& a, glm::ivec3 const& b) const {
             return a == b;
         }
- };
+    };
+}
+
 
 #endif
