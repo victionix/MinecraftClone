@@ -36,7 +36,6 @@ unsigned int gfx::ChunkMeshBuffers::getCount()
 {
 	return m_Ibo.GetCount();
 }
-
 terrain::ChunkMesh::ChunkMesh(glm::ivec3 position)
 	:terrain::Chunk(position)
 {	
