@@ -20,8 +20,7 @@ int main()
     gfx::Window window(1920, 1080, "Minecraft Clone");
     {
         terrain::ChunkMap chunkMap;
-    Player m_Player;
-    terrain::ChunkMap m_ChunkMap(1);
+        Player m_Player;
     {
         {
             gfx::Shader shader("res/shaders/default.vert", "res/shaders/default.frag");
@@ -67,7 +66,7 @@ int main()
                             chunkMap.updateChunks(lastChunkPos, m_Player.m_ChunkPos);
                     }
                     
-                        chunkMap.RenderChunks(textureArray, shader, m_Player.m_Cam.m_ViewMatrix, m_Player.m_Cam.m_ProjectionMatrix, grassTopColor);
+                    chunkMap.RenderChunks(textureArray, shader, m_Player.m_Cam.m_ViewMatrix, m_Player.m_Cam.m_ProjectionMatrix, grassTopColor);
             
                     //auto resultCast = ray.rayCast(world.m_Player.m_Cam.m_Position, world.m_Player.m_Cam.m_Front);
                     //if (resultCast.sucess)

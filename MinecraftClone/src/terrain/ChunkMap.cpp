@@ -46,8 +46,6 @@ void terrain::ChunkMap::addChunk(const glm::ivec3 position)
 	m_Chunks.emplace(position,std::move(chunk));
 	m_WorldGenerator.GenerateChunk(m_Chunks[position]);
 
-	m_WorldGenerator.GenerateChunk(chunk);
-	m_Chunks.emplace(position, std::move(chunk));
 	for (uint16_t i = 0; i < 26; i++)
 	{
 		glm::ivec3 offset = position + terrain::Chunk::m_NeighboursOffset[i];
@@ -65,24 +63,6 @@ void terrain::ChunkMap::BuildChunks()
 	for (auto& chunk : m_Chunks)
 	{
 		chunk.second->Build();
-	}
-}
-
-
-void terrain::ChunkMap::BuildNeighboursChunks(const glm::ivec3 position)
-{
-	for (uint32_t i = 0; i < 26; i++)
-	{
-		glm::ivec3 offset = position + terrain::Chunk::m_NeighboursOffset[i];
-		std::weak_ptr<Chunk> accessNeighbour = find(offset);
-		if (auto neigh = accessNeighbour.lock())
-		{
-			//if (neigh->m_ShouldRebuild)
-			//{
-			//		
-			//		neigh->Build();
-			//}
-		}
 	}
 }
 
