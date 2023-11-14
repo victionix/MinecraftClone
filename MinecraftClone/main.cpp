@@ -66,7 +66,7 @@ int main()
                             chunkMap.updateChunks(lastChunkPos, m_Player.m_ChunkPos);
                     }
                     
-                        chunkMap.RenderChunks(textureArray, shader, m_Player.m_Cam.m_ViewMatrix, m_Player.m_Cam.m_ProjectionMatrix, grassTopColor);
+                    chunkMap.RenderChunks(textureArray, shader, m_Player.m_Cam.m_ViewMatrix, m_Player.m_Cam.m_ProjectionMatrix, grassTopColor);
             
                     //auto resultCast = ray.rayCast(world.m_Player.m_Cam.m_Position, world.m_Player.m_Cam.m_Front);
                     //if (resultCast.sucess)

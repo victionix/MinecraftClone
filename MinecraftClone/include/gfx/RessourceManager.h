@@ -1,6 +1,8 @@
 #ifndef RESSOURCE_MANAGER_H
 #define RESSOURCE_MANAGER_H
 
+//DO NOT INCLUDE THAT IT DOESN'T WORK
+
 #include <unordered_map>
 #include <string>
 #include <util/Log.h>

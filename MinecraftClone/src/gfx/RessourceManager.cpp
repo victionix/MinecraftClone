@@ -1,6 +1,9 @@
 #include <gfx/RessourceManager.h>
 #include <gfx/gfx.h>
 
+//DO NOT INCLUDE THAT IT DOESN'T WORK
+
+
 std::unordered_map<std::string, std::unique_ptr<gfx::Shader>> gfx::RessourceManager::m_Shaders;
 //std::unordered_map<std::string, std::unique_ptr<gfx::Texture>> gfx::RessourceManager::m_Textures;
 //std::unique_ptr<gfx::TextureArray> m_TextureArray;

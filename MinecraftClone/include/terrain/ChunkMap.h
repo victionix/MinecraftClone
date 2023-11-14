@@ -5,9 +5,7 @@
 #include <vector>
 #include <terrain/ChunkMesh.h>
 #include <terrain/WorldGenerator.h>
-
 #include <terrain/hashGlmIvec3.h>
-
 
 namespace terrain
 {
