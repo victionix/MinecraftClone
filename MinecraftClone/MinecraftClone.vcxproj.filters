@@ -99,9 +99,6 @@
     <ClCompile Include="src\gfx\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gfx\SafeMesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\util\Raycast.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1047,9 +1044,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\terrain\World.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\gfx\SafeMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\gfx\Mesh.h">

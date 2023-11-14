@@ -133,7 +133,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\gfx\SafeMesh.cpp" />
     <ClCompile Include="src\gfx\Mesh.cpp" />
     <ClCompile Include="src\terrain\World.cpp" />
     <ClCompile Include="src\gfx\Window.cpp" />
@@ -172,7 +171,6 @@
     <ClInclude Include="include\gfx\Buffers\IndexBuffer.h" />
     <ClInclude Include="include\gfx\Buffers\VertexBuffer.h" />
     <ClInclude Include="include\gfx\Mesh.h" />
-    <ClInclude Include="include\gfx\SafeMesh.h" />
     <ClInclude Include="include\gfx\Window.h" />
     <ClInclude Include="include\terrain\World.h" />
     <ClInclude Include="include\util\Camera.h" />
