@@ -1,8 +1,9 @@
 #ifndef VERTEX_H
 #define VERTEX_H
-
+#define  GLEW_STATIC 1
 
 #include <glm/glm.hpp>
+
 #include <GL/glew.h>
 
 struct Vertex

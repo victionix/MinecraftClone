@@ -2,7 +2,6 @@
 #define CHUNKMESH_H
 
 #include <gfx/gfx.h>
-#include <gfx/Mesh.h>
 #include <terrain/Chunk.h>
 
 
@@ -11,10 +10,11 @@ namespace gfx
 	class ChunkMeshBuffers
 	{
 	public:
-		ChunkMeshBuffers(MeshData meshData);
+		ChunkMeshBuffers();
 		~ChunkMeshBuffers();
 		void Bind();
 		void UnBind();
+		void LoadData(MeshData meshData);
 		unsigned int  getCount();
 	private:
 		gfx::VertexArray m_Vao;
@@ -38,7 +38,7 @@ namespace terrain
 		void Render(gfx::TextureArray& textureArray, gfx::Shader& shader,glm::mat4 view, glm::mat4 projection, glm::vec4 grassColor);
 
 	private:
-		std::unique_ptr<gfx::ChunkMeshBuffers> m_Buffers;
+		gfx::ChunkMeshBuffers m_Buffers;
 		MeshData m_MeshData;
 	public:
 		bool m_IsBuild = false;

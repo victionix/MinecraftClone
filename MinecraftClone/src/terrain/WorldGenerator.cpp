@@ -2,7 +2,7 @@
 #include <Blocks/AllBlocks.h>
 
 
-void terrain::WorldGenerator::GenerateChunk(std::shared_ptr<terrain::ChunkMesh> chunk)
+void terrain::WorldGenerator::GenerateChunk(std::shared_ptr<terrain::Chunk> chunk)
 {
     glm::ivec3 position = glm::ivec3(0);
 
@@ -27,7 +27,7 @@ void terrain::WorldGenerator::GenerateChunk(std::shared_ptr<terrain::ChunkMesh> 
     chunk->setBlock(glm::ivec3(0, 2, 0), std::make_unique<Dirt>());
 }
 
-void terrain::WorldGenerator::GenerateChunk(terrain::ChunkMesh* chunk)
+void terrain::WorldGenerator::GenerateChunk(terrain::Chunk* chunk)
 {
     glm::ivec3 position = glm::ivec3(0);
 

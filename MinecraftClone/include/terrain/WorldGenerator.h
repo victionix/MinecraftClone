@@ -10,8 +10,8 @@ namespace terrain
 	public:
 		WorldGenerator(uint64_t seed) : m_Seed(seed) {};
 
-		void GenerateChunk(std::shared_ptr<terrain::ChunkMesh> chunk);
-		void GenerateChunk(terrain::ChunkMesh* chunk);
+		void GenerateChunk(std::shared_ptr<terrain::Chunk> chunk);
+		void GenerateChunk(terrain::Chunk* chunk);
 
 	private:
 		uint64_t m_Seed;

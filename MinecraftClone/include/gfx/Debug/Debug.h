@@ -15,7 +15,7 @@
 void GLClearError();
 bool GLCheckError();
 
-    
+
 static const std::thread::id mainThread = std::this_thread::get_id();
 static const auto nbrAvailableThreads = std::thread::hardware_concurrency();
 

@@ -20,22 +20,7 @@ namespace terrain
 		void addChunk(const glm::ivec3 position);
 		void BuildChunks();
 
-		void eraseChunk(glm::ivec3 position) 
-		{
-			//m_Chunks[position]->free();
-			//m_Chunks[position].reset();
-			//m_Chunks[position] = nullptr;
-			m_Chunks.erase(position);
-			for (uint16_t i = 0; i < 26; i++)
-			{
-				glm::ivec3 offset = position + terrain::Chunk::m_NeighboursOffset[i];
-				auto accessNeighbour = find(offset);
-				if (accessNeighbour != nullptr)
-				{
-					accessNeighbour->m_Neighbours[terrain::Chunk::m_InverseNeighboursOffset[i]].reset();
-				}
-			}
-		};
+		void eraseChunk(glm::ivec3 position);
 
 		void updateChunks(const glm::ivec2 oldCenterPosition,const glm::ivec2 newCenterPosition);
 		void updateRenderDistance(const uint32_t newRenderDistance);

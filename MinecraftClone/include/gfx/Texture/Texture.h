@@ -3,6 +3,8 @@
 
 #include <gfx/Debug/Debug.h>
 #include <gfx/Shaders/Shader.h>
+#include <vector>
+
 namespace gfx {
     class Texture
     {

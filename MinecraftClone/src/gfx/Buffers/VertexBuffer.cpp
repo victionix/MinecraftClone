@@ -27,9 +27,7 @@ gfx::VertexBuffer::~VertexBuffer()
 void gfx::VertexBuffer::loadNewData(std::vector<Vertex> newVertices)
 {
     Bind();
-    GLCall(glBufferData(GL_ARRAY_BUFFER, newVertices.size() * sizeof(Vertex), nullptr, GL_STATIC_DRAW));
-
-    GLCall(glBufferSubData(GL_ARRAY_BUFFER, 0, newVertices.size() * sizeof(Vertex), newVertices.data()));
+    GLCall(glBufferData(GL_ARRAY_BUFFER, newVertices.size()*sizeof(Vertex), newVertices.data(), GL_STATIC_DRAW));
     Unbind();
 
 

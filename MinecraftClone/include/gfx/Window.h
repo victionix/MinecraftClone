@@ -1,9 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
+#define  GLEW_STATIC 1
 
 #include <gfx/Debug/Debug.h>
 #include <GLFW/glfw3.h>
-#include <GL/GL.h>
+//#include <GL/gl.h>
 #include <string>
 #include <glm/glm.hpp>
 

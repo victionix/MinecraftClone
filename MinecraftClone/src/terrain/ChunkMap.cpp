@@ -65,9 +65,22 @@ void terrain::ChunkMap::BuildChunks()
 		chunk.second->Build();
 	}
 }
+void terrain::ChunkMap::eraseChunk(glm::ivec3 position)
+{
+	m_Chunks.erase(position);
+	for (uint16_t i = 0; i < 26; i++)
+	{
+		glm::ivec3 offset = position + terrain::Chunk::m_NeighboursOffset[i];
+		auto accessNeighbour = find(offset);
+		if (accessNeighbour != nullptr)
+		{
+			accessNeighbour->m_Neighbours[terrain::Chunk::m_InverseNeighboursOffset[i]].reset();
+		}
+	}
+}
 void terrain::ChunkMap::updateChunks(const glm::ivec2 oldCenterPosition, const glm::ivec2 newCenterPosition)
 {
-	util::Log<glm::ivec2>(newCenterPosition, "Current chunk Position");
+	//util::Log<glm::ivec2>(newCenterPosition, "Current chunk Position");
 	std::vector<glm::ivec2> chunkToErase = {};
 	std::vector<glm::ivec2> chunkToBuild = {};
 	std::vector<glm::ivec2> chunkToRebuild = {};
@@ -96,10 +109,8 @@ void terrain::ChunkMap::updateChunks(const glm::ivec2 oldCenterPosition, const g
 			addChunk(glm::ivec3(x.x, y, x.y));
 		}
 	}
-
 	for (std::size_t i = 0; i < chunkToBuild.size(); i++)
-	{
-		
+	{	
 		for (int y = 0; y < terrain::Chunk::m_HeightLimit; y++)
 		{
 			glm::ivec3 position = glm::ivec3(chunkToBuild[i].x,y, chunkToBuild[i].y);
@@ -108,7 +119,6 @@ void terrain::ChunkMap::updateChunks(const glm::ivec2 oldCenterPosition, const g
 	}	
 	for (std::size_t i = 0; i < chunkToErase.size(); i++)
 	{
-
 		for (int y = 0; y < terrain::Chunk::m_HeightLimit; y++)
 		{
 			glm::ivec3 position = glm::ivec3(chunkToErase[i].x, y, chunkToErase[i].y);
@@ -117,7 +127,6 @@ void terrain::ChunkMap::updateChunks(const glm::ivec2 oldCenterPosition, const g
 	}
 	for (std::size_t i = 0; i < chunkToRebuild.size(); i++)
 	{
-
 		for (int y = 0; y < terrain::Chunk::m_HeightLimit; y++)
 		{
 			m_Chunks[glm::ivec3(chunkToRebuild[i].x, y, chunkToRebuild[i].y)]->Build();

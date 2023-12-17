@@ -3,7 +3,7 @@
 
 #include <glm/glm.hpp>
 #include <gfx/Window.h>
-#include <glm/gtc/matrix_transform.hpp>
+#include <glm/ext/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
 
 namespace util
@@ -34,8 +34,9 @@ namespace util
 	class PerspectiveCamera : public Camera
 	{
 	public:
-		PerspectiveCamera(glm::vec3 initialPosition = glm::vec3(0.0f), float fov = 60.0f) { 
-			Camera::Camera(initialPosition); 
+		PerspectiveCamera(glm::vec3 initialPosition = glm::vec3(0.0f), float fov = 60.0f)
+            : Camera(initialPosition)
+        {
 			m_Fov = fov;
 			m_ProjectionMatrix = glm::perspective(glm::radians(m_Fov), gfx::Window::m_AspectRatio, 0.1f, 100.0f); };
 

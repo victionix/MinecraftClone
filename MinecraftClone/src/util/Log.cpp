@@ -5,6 +5,6 @@ namespace util
 {
 	void Log(const std::string message)
 	{
-		std::cout << message << "\n";
+		std::cout << message << std::endl;
 	}
 };	

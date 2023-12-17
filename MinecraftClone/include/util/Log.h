@@ -32,7 +32,7 @@ namespace util {
 	template<typename T>
 	void Log(const T& data, const std::string message)
 	{
-		std::cout << message << " " << data << "\n";
+		std::cout << message << " " << data <<  std::endl;
 	}
 	
 	template<typename T, std::size_t N>
@@ -43,7 +43,7 @@ namespace util {
 		{
 			std::cout << x << " ";
 		}
-		std::cout << "\n";
+		std::cout <<  std::endl;
 	
 	}
 
@@ -56,7 +56,7 @@ namespace util {
 		{
 			std::cout << x << " ";
 		}
-		std::cout << "\n";
+		std::cout << std::endl;
 	
 	}
 

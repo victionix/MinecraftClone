@@ -29,8 +29,7 @@ void gfx::IndexBuffer::loadNewData(std::vector<uint32_t> newIndices)
 {
     Bind();
     m_Count = newIndices.size();
-    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Count * sizeof(uint32_t),nullptr, GL_STATIC_DRAW));
-    GLCall(glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, m_Count * sizeof(uint32_t), newIndices.data()));
+    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, newIndices.size() * sizeof(uint32_t), newIndices.data(), GL_STATIC_DRAW));
     UnBind();
 }
 

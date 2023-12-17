@@ -3,12 +3,12 @@
 #include <chrono>
 
 
-gfx::ChunkMeshBuffers::ChunkMeshBuffers(MeshData meshData)
-	:m_Vbo(meshData.vertices), m_Ibo(meshData.indices)
+gfx::ChunkMeshBuffers::ChunkMeshBuffers()
 {
 	m_Vao.LinkAttrib(m_Vbo, 0, GL_FLOAT, 3, GL_FALSE, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(0));
 	m_Vao.LinkAttrib(m_Vbo, 1, GL_FLOAT, 2, GL_FALSE, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(3 * sizeof(GLfloat)));
 	m_Vao.LinkAttribi(m_Vbo, 2, GL_INT, 1, 5 * sizeof(GLfloat) + sizeof(GLuint), (void*)(5 * sizeof(GLfloat)));
+	m_Vao.UnBind();
 }
 
 
@@ -32,6 +32,12 @@ void gfx::ChunkMeshBuffers::UnBind()
 	m_Ibo.UnBind();
 }
 
+void gfx::ChunkMeshBuffers::LoadData(MeshData meshData)
+{
+	m_Vbo.loadNewData(meshData.vertices);
+	m_Ibo.loadNewData(meshData.indices);
+}
+
 unsigned int gfx::ChunkMeshBuffers::getCount()
 {
 	return m_Ibo.GetCount();
@@ -39,15 +45,13 @@ unsigned int gfx::ChunkMeshBuffers::getCount()
 terrain::ChunkMesh::ChunkMesh(glm::ivec3 position)
 	:terrain::Chunk(position)
 {	
-	m_Buffers = nullptr;
 	util::Log<glm::ivec3>(m_Position, "Chunk Created at position :");
-
 }
 
 
 void terrain::ChunkMesh::Build()
 {
-	
+	util::Log<glm::ivec3>(m_Position, "Chunk Builded at position :");
 	m_MeshData.vertices.clear();
 	m_MeshData.indices.clear();
 
@@ -64,21 +68,22 @@ void terrain::ChunkMesh::Build()
 				{
 					if (currentBlock->mesh != BLOCKMESH_NULL)
 					{
-						currentBlock->generateMesh(m_MeshData.indices, m_MeshData.vertices, this->getBlockNeighBours(blockPos), blockPos);
+						
+						currentBlock->generateMesh(m_MeshData,this->getBlockNeighBours(blockPos), blockPos);
 					}
 				}
 			}
 		}
 	}
-	
+
 	if ((m_MeshData.vertices.size() != 0) && (m_MeshData.indices.size() != 0))
 	{
-		m_Buffers = std::make_unique<gfx::ChunkMeshBuffers>(m_MeshData);
+		
+		m_Buffers.LoadData(m_MeshData);
 	}
 	else
-	{
-		
-		m_Buffers = nullptr;
+	{	
+		m_Buffers.LoadData({});
 		m_IsEmpty = true;
 	}
 
@@ -98,11 +103,11 @@ void terrain::ChunkMesh::Render(gfx::TextureArray& textureArray, gfx::Shader& sh
 
 	textureArray.Bind();
 
-	m_Buffers->Bind();
+	m_Buffers.Bind();
 
-	GLCall(glDrawElements(GL_TRIANGLES, m_Buffers->getCount(), GL_UNSIGNED_INT, nullptr));
+	GLCall(glDrawElements(GL_TRIANGLES, m_Buffers.getCount(), GL_UNSIGNED_INT, nullptr));
 
-	m_Buffers->UnBind();
+	m_Buffers.UnBind();
 	
 	textureArray.UnBind();
 	shader.UnBind();
@@ -112,6 +117,7 @@ terrain::ChunkMesh::~ChunkMesh()
 {
 	m_MeshData.vertices.clear();
 	m_MeshData.indices.clear();
+	m_Buffers.~ChunkMeshBuffers();
 	util::Log<glm::ivec3>(m_Position, "Chunk Destroyed at position :");
 }
 

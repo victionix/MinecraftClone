@@ -118,40 +118,39 @@ void Block::TopFaceMeshData(std::vector<uint32_t>& indices, std::vector<Vertex>&
     vertices.insert(vertices.end(), insertVertex, insertVertex + 4);
 }
 
-void Block::generateMesh(std::vector<uint32_t>& indices, std::vector<Vertex>& vertices,  SolidNeighBours neighbours, glm::ivec3 position)
+void Block::generateMesh(MeshData& mesh,SolidNeighBours neighbours, glm::ivec3 position)
 {
     if (!neighbours.neighbours[8])
     {
-        RightFaceMeshData(indices, vertices, position);
+        RightFaceMeshData(mesh.indices, mesh.vertices, position);
     }
 
     if (!neighbours.neighbours[17])
     {
-           LeftFaceMeshData(indices, vertices,position);
+           LeftFaceMeshData(mesh.indices, mesh.vertices,position);
 
     }
     if (!neighbours.neighbours[2])
     {
 
-            TopFaceMeshData(indices, vertices, position);
+            TopFaceMeshData(mesh.indices, mesh.vertices, position);
             
     }
     if (!neighbours.neighbours[5])
     {
 
-            BottomFaceMeshData(indices, vertices, position);
+            BottomFaceMeshData(mesh.indices, mesh.vertices, position);
 
     }
     if (!neighbours.neighbours[0])
     {
 
-            FrontFaceMeshData(indices, vertices, position);
+            FrontFaceMeshData(mesh.indices, mesh.vertices, position);
     }
     if (!neighbours.neighbours[1])
     {
 
-            BackFaceMeshData(indices, vertices,position);
-        
+            BackFaceMeshData(mesh.indices, mesh.vertices,position);
     }
 }
 

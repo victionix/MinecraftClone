@@ -133,7 +133,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\gfx\Mesh.cpp" />
     <ClCompile Include="src\terrain\World.cpp" />
     <ClCompile Include="src\gfx\Window.cpp" />
     <ClCompile Include="src\Player\Player.cpp" />
@@ -170,7 +169,7 @@
     <ClInclude Include="include\Blocks\Block.h" />
     <ClInclude Include="include\gfx\Buffers\IndexBuffer.h" />
     <ClInclude Include="include\gfx\Buffers\VertexBuffer.h" />
-    <ClInclude Include="include\gfx\Mesh.h" />
+    <ClInclude Include="include\gfx\Debug\Debug.h" />
     <ClInclude Include="include\gfx\Window.h" />
     <ClInclude Include="include\terrain\World.h" />
     <ClInclude Include="include\util\Camera.h" />
@@ -473,7 +472,6 @@
     <ClInclude Include="lib\ImGUI\imstb_rectpack.h" />
     <ClInclude Include="lib\ImGUI\imstb_textedit.h" />
     <ClInclude Include="lib\ImGUI\imstb_truetype.h" />
-    <ClInclude Include="include\gfx\Debug\Debug.h" />
     <ClInclude Include="include\gfx\Shaders\Shader.h" />
     <ClInclude Include="lib\stb_image\stb_image.h" />
     <ClInclude Include="include\gfx\Texture\Texture.h" />

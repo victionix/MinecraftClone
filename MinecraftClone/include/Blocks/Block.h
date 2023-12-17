@@ -49,6 +49,14 @@ struct SolidNeighBours
 	std::array<bool, 26> neighbours;
 };
 
+
+struct MeshData
+{
+	std::vector<uint32_t> indices = {};
+	std::vector<Vertex> vertices = {};
+};
+
+
 class Block
 {
 public:
@@ -68,7 +76,7 @@ public:
 	void BottomFaceMeshData(std::vector<uint32_t>& indices, std::vector<Vertex>& vertices, glm::ivec3 position);
 	void TopFaceMeshData(std::vector<uint32_t>& indices, std::vector<Vertex>& vertices, glm::ivec3 position);
 
-	void generateMesh(std::vector<uint32_t>& indices, std::vector<Vertex>& vertices, SolidNeighBours neighbours, glm::ivec3 position);
+	void generateMesh(MeshData& mesh,SolidNeighBours neighbours, glm::ivec3 position);
 
 };
 

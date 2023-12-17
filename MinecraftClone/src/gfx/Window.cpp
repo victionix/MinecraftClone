@@ -21,18 +21,34 @@ gfx::Window::~Window()
     glfwDestroyWindow(m_Window);
     glfwTerminate();
 }
+
+void err(int error, const char* description)
+{
+    fprintf(stderr, "Error: %s\n", description);
+}
+
 void gfx::Window::init()
 {
 
+    glfwSetErrorCallback(err);
 	if (!glfwInit())
 	{
-		util::Log("WARNING cannot create window");
+
+        fprintf(stderr, "GLFW failed to initialize.");
+
+        int code = glfwGetError(NULL);
+
+        util::Log<int>(code,"Code ");
+
+        glfwTerminate();
+
+
 		abort();
 	}
 
     //glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     m_Window = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), NULL, NULL);
     if (!m_Window)
