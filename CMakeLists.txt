@@ -26,6 +26,7 @@ set(SOURCE_FILES
         MinecraftClone/src/gfx/Buffers/IndexBuffer.cpp
         MinecraftClone/src/gfx/Buffers/VertexBuffer.cpp
         MinecraftClone/src/gfx/Debug/Debug.cpp
+
         #MinecraftClone/src/gfx/Mesh.cpp
         MinecraftClone/src/gfx/Window.cpp
         #./src/gfx/RessourceManager.cpp
@@ -34,6 +35,7 @@ set(SOURCE_FILES
         MinecraftClone/src/gfx/Texture/Texture.cpp
         MinecraftClone/src/Player/Player.cpp
         MinecraftClone/main.cpp
+        MinecraftClone/src/gfx/Debug/Debug.cpp
 )
 
 
@@ -59,7 +61,7 @@ set(GLEW_LIB
 target_link_libraries(MinecraftClone
         PUBLIC
         glfw #glfw3 #${GLFW3_LIBRARY}
-        GLEW# glew  #${GLEW_LIB}
+        GLEW # glew  #${GLEW_LIB}
         #       ${OPENGL_LIB}
         GL #opengl32
         GLU #glu32

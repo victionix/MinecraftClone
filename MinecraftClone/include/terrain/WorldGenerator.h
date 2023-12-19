@@ -1,7 +1,7 @@
 #ifndef WORLD_GENERATOR_H
 #define WORLD_GENERATOR_H
 
-#include <terrain/Chunkmesh.h>
+#include <terrain/ChunkMesh.h>
 
 namespace terrain
 {

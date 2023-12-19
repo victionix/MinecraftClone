@@ -24,7 +24,8 @@ gfx::Window::~Window()
 
 void err(int error, const char* description)
 {
-    fprintf(stderr, "Error: %s\n", description);
+    fprintf(stderr, "Error: %d %s\n",error, description);
+
 }
 
 void gfx::Window::init()
@@ -47,8 +48,10 @@ void gfx::Window::init()
 	}
 
     //glfwWindowHint(GLFW_SAMPLES, 4);
+
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     m_Window = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), NULL, NULL);
     if (!m_Window)

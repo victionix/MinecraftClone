@@ -17,102 +17,102 @@
 
 int main() {
     using namespace std::chrono_literals;
-    util::Log("Hello");
+
     gfx::Window window(1920, 1080, "Minecraft Clone");
     {
-        util::Log("Hello World");
+
         terrain::ChunkMap chunkMap;
         chunkMap.updateChunks(glm::vec2(0,0),glm::vec2(0,1));
-//        Player m_Player;
-//        {
-//            {
-//
-//                gfx::Shader shader("res/shaders/default.vert", "res/shaders/default.frag");
-//
-//                std::vector<std::string> paths = {"res/textures/dirt.png", "res/textures/grass_block_side.png",
-//                                                  "res/textures/grass_block_side_overlay.png",
-//                                                  "res/textures/grass_block_top.png", "res/textures/cobblestone.png"};
-//                gfx::TextureArray textureArray(paths, 0);
-//
-//                textureArray.texUnit(shader, "tex0");
-//                textureArray.Bind();
-//
-//                glm::vec4 grassTopColor = glm::vec4(1.0F);
-//
-//                IMGUI_CHECKVERSION();
-//                ImGui::CreateContext();
-//                ImGuiIO &io = ImGui::GetIO();
-//                (void) io;
-//                ImGui::StyleColorsDark();
-//                ImGui_ImplGlfw_InitForOpenGL(window.getWindow(), true);
-//                ImGui_ImplOpenGL3_Init("#version 420");
-//
-//
-//                float deltaTime = 0.0f;
-//                float lastFrame = 0.0f;
-//                util::Raycast ray(2);
-//
-//                std::string targetBlock = "AIR";
-//
-//                while (!glfwWindowShouldClose(window.getWindow())) {
-//                    window.clear();
-//                    ImGui_ImplOpenGL3_NewFrame();
-//                    ImGui_ImplGlfw_NewFrame();
-//                    ImGui::NewFrame();
-//
-//
-//                    {
-//                        double currentFrame = glfwGetTime();
-//                        deltaTime = currentFrame - lastFrame;
-//                        lastFrame = currentFrame;
-//                        glm::ivec2 lastChunkPos = m_Player.m_ChunkPos;
-//                        m_Player.update(deltaTime);
-//
-//                        if (m_Player.m_ChunkPos != lastChunkPos) {
-//                            chunkMap.updateChunks(lastChunkPos, m_Player.m_ChunkPos);
-//                        }
-//
-//                        chunkMap.RenderChunks(textureArray, shader, m_Player.m_Cam.m_ViewMatrix,
-//                                              m_Player.m_Cam.m_ProjectionMatrix, grassTopColor);
-//
-//                        //auto resultCast = ray.rayCast(world.m_Player.m_Cam.m_Position, world.m_Player.m_Cam.m_Front);
-//                        //if (resultCast.sucess)
-//                        //{
-//                        //    targetBlock = "DIRT";
-//                        //}
-//                        //else
-//                        //{
-//                        //    targetBlock = "AIR";
-//                        //}
-//                    }
-//
-//                    {
-//                        ImGui::Begin("Application info");
-//                        ImGui::Text("Application average %.7f s/frame (%.1f FPS)", deltaTime, ImGui::GetIO().Framerate);
-//                        ImGui::Text("Position : %f, %f, %f ", m_Player.m_Cam.m_Position.x, m_Player.m_Cam.m_Position.y,
-//                                    m_Player.m_Cam.m_Position.z);
-//                        //ImGui::Text("ChunkPosition : %d, %d ", world.m_Player.m_ChunkPos.x, world.m_Player.m_ChunkPos.y);
-//                        ImGui::Text(targetBlock.c_str());
-//                        ImGui::ColorEdit4("GrassColor", &grassTopColor.x);
-//                        ImGui::End();
-//                    }
-//                    ImGui::Render();
-//                    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-//
-//
-//                    window.update();
-//                };
-//
-//                ImGui_ImplOpenGL3_Shutdown();
-//                ImGui_ImplGlfw_Shutdown();
-//                ImGui::DestroyContext();
-//
-//                textureArray.~TextureArray();
-//                shader.~Shader();
-//
-//
-//            }
-//        }
+        Player m_Player;
+        {
+            {
+
+                gfx::Shader shader("res/shaders/default.vert", "res/shaders/default.frag");
+
+                std::vector<std::string> paths = {"res/textures/dirt.png", "res/textures/grass_block_side.png",
+                                                  "res/textures/grass_block_side_overlay.png",
+                                                  "res/textures/grass_block_top.png", "res/textures/cobblestone.png"};
+                gfx::TextureArray textureArray(paths, 0);
+
+                textureArray.texUnit(shader, "tex0");
+                textureArray.Bind();
+
+                glm::vec4 grassTopColor = glm::vec4(1.0F);
+
+                IMGUI_CHECKVERSION();
+                ImGui::CreateContext();
+                ImGuiIO &io = ImGui::GetIO();
+                (void) io;
+                ImGui::StyleColorsDark();
+                ImGui_ImplGlfw_InitForOpenGL(window.getWindow(), true);
+                ImGui_ImplOpenGL3_Init("#version 420");
+
+
+                float deltaTime = 0.0f;
+                float lastFrame = 0.0f;
+                util::Raycast ray(2);
+
+                std::string targetBlock = "AIR";
+
+                while (!glfwWindowShouldClose(window.getWindow())) {
+                    window.clear();
+                    ImGui_ImplOpenGL3_NewFrame();
+                    ImGui_ImplGlfw_NewFrame();
+                    ImGui::NewFrame();
+
+
+                    {
+                        double currentFrame = glfwGetTime();
+                        deltaTime = currentFrame - lastFrame;
+                        lastFrame = currentFrame;
+                        glm::ivec2 lastChunkPos = m_Player.m_ChunkPos;
+                        m_Player.update(deltaTime);
+
+                        if (m_Player.m_ChunkPos != lastChunkPos) {
+                            chunkMap.updateChunks(lastChunkPos, m_Player.m_ChunkPos);
+                        }
+
+                        chunkMap.RenderChunks(textureArray, shader, m_Player.m_Cam.m_ViewMatrix,
+                                              m_Player.m_Cam.m_ProjectionMatrix, grassTopColor);
+
+                        //auto resultCast = ray.rayCast(world.m_Player.m_Cam.m_Position, world.m_Player.m_Cam.m_Front);
+                        //if (resultCast.sucess)
+                        //{
+                        //    targetBlock = "DIRT";
+                        //}
+                        //else
+                        //{
+                        //    targetBlock = "AIR";
+                        //}
+                    }
+
+                    {
+                        ImGui::Begin("Application info");
+                        ImGui::Text("Application average %.7f s/frame (%.1f FPS)", deltaTime, ImGui::GetIO().Framerate);
+                        ImGui::Text("Position : %f, %f, %f ", m_Player.m_Cam.m_Position.x, m_Player.m_Cam.m_Position.y,
+                                    m_Player.m_Cam.m_Position.z);
+                        //ImGui::Text("ChunkPosition : %d, %d ", world.m_Player.m_ChunkPos.x, world.m_Player.m_ChunkPos.y);
+                        ImGui::Text(targetBlock.c_str());
+                        ImGui::ColorEdit4("GrassColor", &grassTopColor.x);
+                        ImGui::End();
+                    }
+                    ImGui::Render();
+                    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+                    window.update();
+                };
+
+                ImGui_ImplOpenGL3_Shutdown();
+                ImGui_ImplGlfw_Shutdown();
+                ImGui::DestroyContext();
+
+                textureArray.~TextureArray();
+                shader.~Shader();
+
+
+            }
+        }
     }
     window.~Window();
     return 0;

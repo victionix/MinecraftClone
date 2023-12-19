@@ -1,4 +1,4 @@
-#version 420 core
+#version 460 core
 
 layout(location = 0) in vec4 position;
 layout(location = 1) in vec2 v_Texpos;
@@ -21,6 +21,6 @@ void main()
 	u_TexID = v_TexID;
 
 	gl_Position = (u_Projection * u_View * u_Model) * vec4(position);
-};
+}
 
 

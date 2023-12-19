@@ -25,11 +25,11 @@ gfx::IndexBuffer::~IndexBuffer()
     GLCall(glDeleteBuffers(1, &m_RendererID));
 }
 
-void gfx::IndexBuffer::loadNewData(std::vector<uint32_t> newIndices)
+void gfx::IndexBuffer::loadNewData(std::vector< > newIndices)
 {
     Bind();
     m_Count = newIndices.size();
-    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, newIndices.size() * sizeof(uint32_t), newIndices.data(), GL_STATIC_DRAW));
+    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, newIndices.size() * sizeof(GLuint), newIndices.data(), GL_STATIC_DRAW));
     UnBind();
 }
 

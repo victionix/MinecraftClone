@@ -3,8 +3,8 @@
 
 #include <string>  
 #include <unordered_map> 
-#include <GLM/glm.hpp>
-#include <GLM/ext.hpp>
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
 #include <gfx/Debug/Debug.h>
 
 namespace gfx {
